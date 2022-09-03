@@ -181,17 +181,17 @@ class Downloader {
   }
 
   private getVersionPath() {
-    const basePath = "qt5_" + this._version.toString("");
+    const basePath = "qt" + this._version.major.toString() + "_" + this._version.toString("");
     if (this._platform.includes("wasm")) return basePath + "_wasm";
     else return basePath;
   }
 
   private stripPackageName(name: string): string {
-    if (name == `qt.qt5.${this._version.toString("")}.${this._pkgPlatform}`)
+    if (name == `qt.qt${this._version.major.toString()}.${this._version.toString("")}.${this._pkgPlatform}`)
       return "__default";
     else {
       const match = name.match(
-        `^qt\\.qt5\\.${this._version.toString("")}\\.(.+)\\.${
+        `^qt\\.qt${this._version.major.toString()}\\.${this._version.toString("")}\\.(.+)\\.${
           this._pkgPlatform
         }$`
       );
