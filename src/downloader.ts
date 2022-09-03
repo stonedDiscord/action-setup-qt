@@ -81,9 +81,7 @@ class Downloader {
     if (typeof update.Updates.PackageUpdate == "undefined") return;
     if (!Array.isArray(update.Updates.PackageUpdate))
       update.Updates.PackageUpdate = [update.Updates.PackageUpdate];
-    const filtered = update.Updates.PackageUpdate?.filter((x) =>
-      x.Name.endsWith("." + this._pkgPlatform)
-    );
+    const filtered = update.Updates.PackageUpdate;
     debug(
       `Downloaded ${filtered?.length} valid module configurations from ${url}`
     );
